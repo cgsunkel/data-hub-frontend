@@ -68,6 +68,8 @@ import dnbCheckReducer from '../apps/companies/apps/business-details/client/redu
 import { ID as INVESTMENT_PROFILES_ID } from '../apps/investments/client/state'
 import investmentProfileReducer from '../apps/investments/client/reducer'
 
+import ValidatedForm from './components/Form/Validated'
+
 const sagaMiddleware = createSagaMiddleware()
 const history = createBrowserHistory({
   // The baseURI is set to the <base/> tag by the spaFallbackSpread
@@ -100,6 +102,7 @@ const store = createStore(
     ...ReferralList.reducerSpread,
     ...MultiInstanceForm.reducerSpread,
     ...DropdownMenu.reducerSpread,
+    ...ValidatedForm.reducerSpread,
     // A reducer is required to be able to set a preloadedState parameter
     referrerUrl: (state = {}) => state,
     [INVESTEMENT_PROJECT_ADMIN_ID]: investmentProjectAdminReducer,
