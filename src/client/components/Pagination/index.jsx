@@ -71,9 +71,15 @@ const StyledPagesTruncation = styled('span')`
   color: ${GREY_1};
 `
 
-function Pagination({ totalPages, activePage, onPageClick, getPageUrl }) {
+function Pagination({
+  totalPages,
+  activePage,
+  onPageClick,
+  getPageUrl,
+  filters,
+  history,
+}) {
   const visiblePieces = computeVisiblePieces(totalPages, activePage)
-
   if (totalPages < 2) {
     return null
   }
@@ -87,7 +93,7 @@ function Pagination({ totalPages, activePage, onPageClick, getPageUrl }) {
             const onClick = (event) => {
               event.target.blur()
               event.preventDefault()
-              onPageClick(pageNumber)
+              onPageClick(pageNumber, history, filters)
             }
             const PageNumberLink = isActive
               ? StyledActivePaginationLink

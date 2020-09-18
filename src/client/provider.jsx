@@ -65,8 +65,12 @@ import manageAdviserReducer from '../apps/companies/apps/advisers/client/reducer
 import { ID as DNB_CHECK_ID } from '../apps/companies/apps/business-details/client/state'
 import dnbCheckReducer from '../apps/companies/apps/business-details/client/reducer'
 
-import { ID as INVESTMENT_PROFILES_ID } from '../apps/investments/client/state'
-import investmentProfileReducer from '../apps/investments/client/reducer'
+import { ID as INVESTMENT_PROFILES_ID } from '../apps/investments/client/profiles/state'
+
+import investmentProfileReducer from '../apps/investments/client/profiles/reducer'
+
+import { ID as INVESTMENT_PROJECTS_ID } from '../apps/investments/client/projects/state'
+import investmentProjectsReducer from '../apps/investments/client/projects/reducer'
 
 const sagaMiddleware = createSagaMiddleware()
 const history = createBrowserHistory({
@@ -106,6 +110,7 @@ const store = createStore(
     [MANAGE_ADVISER_ID]: manageAdviserReducer,
     [DNB_CHECK_ID]: dnbCheckReducer,
     [INVESTMENT_PROFILES_ID]: investmentProfileReducer,
+    [INVESTMENT_PROJECTS_ID]: investmentProjectsReducer,
   }),
   {
     referrerUrl: window.document.referrer,

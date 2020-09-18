@@ -129,6 +129,7 @@
     "prop-types": "^15.6.2",
     "pure-uuid": "^1.6.1",
     "qs": "^6.9.4",
+    "query-string": "^6.13.2",
     "raven": "^2.6.2",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.1",

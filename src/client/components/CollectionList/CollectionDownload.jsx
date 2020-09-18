@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import pluralize from 'pluralize'
 import { MEDIA_QUERIES } from '@govuk-react/constants'
-import Button from '@govuk-react/button'
+import Link from '@govuk-react/link'
+import CollectionDownloadMessage from './CollectionDownloadMessage'
 import CollectionHeaderRow from './CollectionHeaderRow'
-import MAX_ITEMS_TO_DOWNLOAD from './constants'
+import { WHITE } from 'govuk-colours'
 
 const StyledInnerText = styled('div')`
   width: 100%;
@@ -15,46 +15,67 @@ const StyledInnerText = styled('div')`
     flex-grow: 1;
   }
 `
-
-const StyledButton = styled(Button)`
+// TODO: we need to lift this out to the button component, as we don't have a link styled as a button
+const StyledButton = styled(Link)`
+  font-size: 19px;
+  font-weight: 400;
+  display: inline-block;
   margin-bottom: 0;
-`
-
-function getInnerText(totalItems, itemName) {
-  const itemPlural = pluralize.plural(itemName)
-  const itemPluralWithCount = pluralize(itemName, totalItems, true)
-
-  if (totalItems === 0) {
-    return `There are no ${itemPlural} to download`
-  } else if (totalItems <= MAX_ITEMS_TO_DOWNLOAD) {
-    return `You can now download ${itemPluralWithCount}`
-  } else {
-    return `Filter to fewer than ${MAX_ITEMS_TO_DOWNLOAD} ${itemPlural} to download`
+  background-color: #00823b;
+  padding: 7px 10px;
+  box-shadow: 0 2px 0 #003418;
+  &:link {
+    color: ${WHITE};
+    text-decoration: none;
   }
-}
-
-function CollectionDownload({ totalItems, itemName, downloadUrl }) {
+  &:hover {
+    background-color: #00682f;
+  }
+  &:focus {
+    background-color: #00823b;
+    transition: box-shadow 0.1s, outline-color 0.1s 0.1s;
+    box-shadow: 0 0 0 3px #ffbf47;
+  }
+`
+const CollectionDownload = ({
+  totalItems,
+  collectionName,
+  downloadUrl,
+  search,
+  maxItemsToDownload = 5000,
+}) => {
   if (!downloadUrl) {
     return null
   }
+  const canDownload = totalItems > 0 && totalItems <= maxItemsToDownload
 
-  const canDownload = totalItems > 0 && totalItems <= MAX_ITEMS_TO_DOWNLOAD
-  const innerText = getInnerText(totalItems, itemName)
   const actions = canDownload && (
-    <StyledButton href={downloadUrl}>Download</StyledButton>
+    <StyledButton
+      href={`${downloadUrl}s/export${decodeURIComponent(search)}`.toLowerCase()}
+    >
+      Download
+    </StyledButton>
   )
 
   return (
     <CollectionHeaderRow actions={actions}>
-      <StyledInnerText>{innerText}</StyledInnerText>
+      <StyledInnerText>
+        <CollectionDownloadMessage
+          totalItems={totalItems}
+          collectionName={collectionName}
+          maxItemsToDownload={maxItemsToDownload}
+        />
+      </StyledInnerText>
     </CollectionHeaderRow>
   )
 }
 
 CollectionDownload.propTypes = {
   totalItems: PropTypes.number.isRequired,
-  itemName: PropTypes.string.isRequired,
-  downloadUrl: PropTypes.string,
+  collectionName: PropTypes.string.isRequired,
+  downloadUrl: PropTypes.string.isRequired,
+  search: PropTypes.string,
+  maxItemsToDownload: PropTypes.number,
 }
 
 CollectionDownload.defaultProps = {
