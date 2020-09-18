@@ -1,9 +1,9 @@
 {
   "parser": "babel-eslint",
   "extends": [
+    "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended",
-    "prettier/react",
-    "plugin:jsx-a11y/reccomended"
+    "prettier/react"
   ],
   "env": {
     "browser": true,
