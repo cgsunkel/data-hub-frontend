@@ -1,14 +1,14 @@
 const ES_KEYS = {
+  attributedTo: 'object.attributedTo.id',
   companiesHouseAccount: 'dit:Accounts',
   companiesHouseCompany: 'dit:Company',
+  companyReferral: 'dit:CompanyReferral',
   hmrcExporter: 'dit:Export',
   interaction: 'dit:Interaction',
-  serviceDelivery: 'dit:ServiceDelivery',
   investmentProject: 'dit:InvestmentProject',
   omis: 'dit:OMISOrder',
+  serviceDelivery: 'dit:ServiceDelivery',
   type: 'object.type',
-  attributedTo: 'object.attributedTo.id',
-  companyReferral: 'dit:CompanyReferral',
 }
 
 const ES_KEYS_GROUPED = {
@@ -30,11 +30,11 @@ const ES_KEYS_GROUPED = {
   ],
 
   dataHubActivity: [
+    ES_KEYS.companyReferral,
     ES_KEYS.interaction, // Interaction
-    ES_KEYS.serviceDelivery, // Interaction
     ES_KEYS.investmentProject,
     ES_KEYS.omis,
-    ES_KEYS.companyReferral,
+    ES_KEYS.serviceDelivery, // Interaction
   ],
 }
 
