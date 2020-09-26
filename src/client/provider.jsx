@@ -66,7 +66,6 @@ import { ID as DNB_CHECK_ID } from '../apps/companies/apps/business-details/clie
 import dnbCheckReducer from '../apps/companies/apps/business-details/client/reducer'
 
 import { ID as INVESTMENT_PROFILES_ID } from '../apps/investments/client/profiles/state'
-
 import investmentProfileReducer from '../apps/investments/client/profiles/reducer'
 
 import { ID as INVESTMENT_PROJECTS_ID } from '../apps/investments/client/projects/state'

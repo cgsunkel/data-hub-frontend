@@ -9,7 +9,7 @@ const initialState = {
   isComplete: false,
 }
 
-export default (state = initialState, { type, result, page }) => {
+export default (state = initialState, { type, result }) => {
   switch (type) {
     case INVESTMENTS__PROFILES_LOADED:
       return {
