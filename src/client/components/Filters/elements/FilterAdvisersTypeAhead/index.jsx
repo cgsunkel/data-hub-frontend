@@ -22,7 +22,7 @@ const fetchAdvisers = (onlyShowActiveAdvisers) =>
   )
 
 const FilterAdvisersTypeAhead = ({
-  task,
+  taskProps,
   name,
   label,
   required = false,
@@ -36,12 +36,7 @@ const FilterAdvisersTypeAhead = ({
 }) => {
   return (
     <FieldWrapper label={label} name={name}>
-      <Task.Status
-        name={task.name}
-        id={task.id}
-        progressMessage={task.progressMessage}
-        startOnRender={task.startOnRender}
-      >
+      <Task.Status {...taskProps}>
         {() => (
           <Typeahead
             name={name}

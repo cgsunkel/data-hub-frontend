@@ -20,7 +20,7 @@ const CollectionList = ({
   itemsPerPage = 10,
   sortOptions = null,
   onFilterChange,
-  task,
+  taskProps,
   count = 0,
   filters,
   isComplete,
@@ -64,12 +64,7 @@ const CollectionList = ({
               search={search}
             />
           )}
-          <Task.Status
-            name={task.name}
-            id={task.id}
-            progressMessage={task.progressMessage}
-            startOnRender={task.startOnRender}
-          >
+          <Task.Status {...taskProps}>
             {() =>
               isComplete && (
                 <>

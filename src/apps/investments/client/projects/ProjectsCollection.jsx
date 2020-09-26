@@ -33,24 +33,22 @@ const ProjectsCollection = (props) => {
   const { adviser } = queryString.parse(search)
   const { page, filters } = props[ID]
 
-  const tasks = {
-    collectionListTask: {
-      name: TASK_GET_PROJECTS_LIST,
-      id: ID,
-      progressMessage: 'loading projects...',
-      startOnRender: {
-        payload: { page, filters, search },
-        onSuccessDispatch: INVESTMENTS__PROJECTS_LOADED,
-      },
+  const collectionListTask = {
+    name: TASK_GET_PROJECTS_LIST,
+    id: ID,
+    progressMessage: 'loading projects...',
+    startOnRender: {
+      payload: { page, filters, search },
+      onSuccessDispatch: INVESTMENTS__PROJECTS_LOADED,
     },
-    adviserListTask: {
-      name: TASK_GET_ADVISER_NAME,
-      id: ID,
-      progressMessage: 'loading projects...',
-      startOnRender: {
-        payload: { adviser },
-        onSuccessDispatch: INVESTMENTS__PROJECTS_SELECTED_ADVISERS,
-      },
+  }
+  const adviserListTask = {
+    name: TASK_GET_ADVISER_NAME,
+    id: ID,
+    progressMessage: 'loading projects...',
+    startOnRender: {
+      payload: { adviser },
+      onSuccessDispatch: INVESTMENTS__PROJECTS_SELECTED_ADVISERS,
     },
   }
 
@@ -63,7 +61,7 @@ const ProjectsCollection = (props) => {
           {...routerProps}
           collectionName="Project"
           sortOptions={sortOptions}
-          task={tasks.collectionListTask}
+          taskProps={collectionListTask}
           maxItemsToDownload={5000}
         >
           <CollectionFilters>
@@ -74,7 +72,7 @@ const ProjectsCollection = (props) => {
               <FilterAdvisersTypeAhead
                 {...props}
                 {...props[ID]}
-                task={tasks.adviserListTask}
+                taskProps={adviserListTask}
                 isMulti={true}
                 closeMenuOnSelect={false}
                 label="Advisers"
