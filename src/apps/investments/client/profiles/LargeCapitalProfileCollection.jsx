@@ -4,14 +4,10 @@ import { connect } from 'react-redux'
 
 import { CollectionList } from '../../../../client/components/'
 import { TASK_GET_PROFILES_LIST, ID } from './state'
-import { COLLECTION_LISTS } from '../../../../client/actions'
-
-const {
-  INVESTMENTS__PROFILES: {
-    INVESTMENTS__PROFILES_LOADED,
-    INVESTMENTS__PROFILE_SELECT_PAGE,
-  },
-} = COLLECTION_LISTS
+import {
+  INVESTMENTS__PROFILES_LOADED,
+  INVESTMENTS__PROFILE_SELECT_PAGE,
+} from '../../../../client/actions'
 
 const LargeCapitalProfileCollection = (props) => {
   const { page } = props[ID]

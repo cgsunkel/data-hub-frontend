@@ -13,16 +13,12 @@ import {
 } from '../../../../client/components'
 
 import { TASK_GET_PROJECTS_LIST, TASK_GET_ADVISER_NAME, ID } from './state'
-import { COLLECTION_LISTS } from '../../../../client/actions'
-
-const {
-  INVESTMENTS__PROJECTS: {
-    INVESTMENTS__PROJECTS_LOADED,
-    INVESTMENTS__PROJECTS_SELECT_PAGE,
-    INVESTMENTS__PROJECTS_FILTER_RESULTS,
-    INVESTMENTS__PROJECTS_SELECTED_ADVISERS,
-  },
-} = COLLECTION_LISTS
+import {
+  INVESTMENTS__PROJECTS_LOADED,
+  INVESTMENTS__PROJECTS_SELECT_PAGE,
+  INVESTMENTS__PROJECTS_FILTER_RESULTS,
+  INVESTMENTS__PROJECTS_SELECTED_ADVISERS,
+} from '../../../../client/actions'
 
 import { sortOptions } from './labels'
 
