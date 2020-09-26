@@ -12,7 +12,12 @@ import {
   CollectionList,
 } from '../../../../client/components'
 
-import { TASK_GET_PROJECTS_LIST, TASK_GET_ADVISER_NAME, ID } from './state'
+import {
+  TASK_GET_PROJECTS_LIST,
+  TASK_GET_ADVISER_NAME,
+  ID,
+  state2props,
+} from './state'
 import {
   INVESTMENTS__PROJECTS_LOADED,
   INVESTMENTS__PROJECTS_SELECT_PAGE,
@@ -31,7 +36,7 @@ const ProjectsCollection = (props) => {
   } = props
 
   const { adviser } = queryString.parse(search)
-  const { page, filters } = props[ID]
+  const { page, filters } = props
 
   const collectionListTask = {
     name: TASK_GET_PROJECTS_LIST,
@@ -57,7 +62,6 @@ const ProjectsCollection = (props) => {
       {(routerProps) => (
         <CollectionList
           {...props}
-          {...props[ID]}
           {...routerProps}
           collectionName="Project"
           sortOptions={sortOptions}
@@ -71,7 +75,6 @@ const ProjectsCollection = (props) => {
             >
               <FilterAdvisersTypeAhead
                 {...props}
-                {...props[ID]}
                 taskProps={adviserListTask}
                 isMulti={true}
                 closeMenuOnSelect={false}
@@ -100,34 +103,31 @@ const ProjectsCollection = (props) => {
   )
 }
 
-export default connect(
-  (state) => state,
-  (dispatch) => ({
-    onPageClick: (page, history, filters) => {
-      history.push({
-        search: queryString.stringify({
-          ...filters,
-          page,
-        }),
-      })
-      dispatch({
-        type: INVESTMENTS__PROJECTS_SELECT_PAGE,
+export default connect(state2props, (dispatch) => ({
+  onPageClick: (page, history, filters) => {
+    history.push({
+      search: queryString.stringify({
+        ...filters,
         page,
-      })
-    },
-    onFilterChange: (targetValue, history, advisers, filters) => {
-      const stateFilters = !targetValue.sortby ? omit(filters, 'page') : filters
-      history.replace({
-        search: queryString.stringify({
-          ...stateFilters,
-          ...targetValue,
-        }),
-      })
-      dispatch({
-        type: INVESTMENTS__PROJECTS_FILTER_RESULTS,
-        filters,
-        advisers,
-      })
-    },
-  })
-)(ProjectsCollection)
+      }),
+    })
+    dispatch({
+      type: INVESTMENTS__PROJECTS_SELECT_PAGE,
+      page,
+    })
+  },
+  onFilterChange: (targetValue, history, advisers, filters) => {
+    const stateFilters = !targetValue.sortby ? omit(filters, 'page') : filters
+    history.replace({
+      search: queryString.stringify({
+        ...stateFilters,
+        ...targetValue,
+      }),
+    })
+    dispatch({
+      type: INVESTMENTS__PROJECTS_FILTER_RESULTS,
+      filters,
+      advisers,
+    })
+  },
+}))(ProjectsCollection)
