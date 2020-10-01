@@ -5,7 +5,8 @@ import PropTypes from 'prop-types'
 import { Card, CardDetails, CardHeader, CardTable } from './card'
 
 import CardUtils from './card/CardUtils'
-import { DateUtils, NumberUtils } from '../utils'
+import { format } from '../../../utils/date-utils'
+import { currencyGBP } from '../../../utils/number-utils'
 import { ACTIVITY_TYPE, SOURCE_TYPES } from '../constants'
 
 export default class CompaniesHouseAccount extends React.PureComponent {
@@ -28,20 +29,18 @@ export default class CompaniesHouseAccount extends React.PureComponent {
     const taxonomy = get(activity, 'dit:taxonomy')
     const summary = get(activity, 'summary')
     const company = CardUtils.getCompany(activity)
-    const balanceSheetDate = DateUtils.format(
+    const balanceSheetDate = format(
       get(activity, 'object.dit:balanceSheetDate')
     )
-    const netAssetsLiabilities = NumberUtils.currencyGBP(
+    const netAssetsLiabilities = currencyGBP(
       get(
         activity,
         'object.dit:netAssetsLiabilitiesIncludingPensionAssetLiability'
       )
     )
-    const periodEnd = DateUtils.format(get(activity, 'object.dit:periodEnd'))
-    const periodStart = DateUtils.format(
-      get(activity, 'object.dit:periodStart')
-    )
-    const shareholderFunds = NumberUtils.currencyGBP(
+    const periodEnd = format(get(activity, 'object.dit:periodEnd'))
+    const periodStart = format(get(activity, 'object.dit:periodStart'))
+    const shareholderFunds = currencyGBP(
       get(activity, 'object.dit:shareholderFunds')
     )
 

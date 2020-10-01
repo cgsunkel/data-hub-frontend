@@ -13,7 +13,7 @@ import {
 import { DefaultItemRenderer } from './card/item-renderers'
 
 import CardUtils from './card/CardUtils'
-import { DateUtils } from '../utils'
+import { format } from '../../../utils/date-utils'
 import { ACTIVITY_TYPE, SOURCE_TYPES } from '../constants'
 
 export default class CompaniesHouseCompany extends React.PureComponent {
@@ -40,22 +40,20 @@ export default class CompaniesHouseCompany extends React.PureComponent {
     const summary = get(activity, 'summary')
     const address = get(activity, 'object.location:dit:address')
     const postcode = get(activity, 'object.location:dit:postcode')
-    const confStmtLastMadeUpDate = DateUtils.format(
+    const confStmtLastMadeUpDate = format(
       get(activity, 'object.dit:confStmtLastMadeUpDate')
     )
-    const confStmtNextDueDate = DateUtils.format(
+    const confStmtNextDueDate = format(
       get(activity, 'object.dit:confStmtNextDueDate')
     )
-    const incorporationDate = DateUtils.format(
+    const incorporationDate = format(
       get(activity, 'object.dit:incorporationDate')
     )
-    const nextDueDate = DateUtils.format(
-      get(activity, 'object.dit:nextDueDate')
-    )
-    const returnsLastMadeUpDate = DateUtils.format(
+    const nextDueDate = format(get(activity, 'object.dit:nextDueDate'))
+    const returnsLastMadeUpDate = format(
       get(activity, 'object.dit:returnsLastMadeUpDate')
     )
-    const returnsNextDueDate = DateUtils.format(
+    const returnsNextDueDate = format(
       get(activity, 'object.dit:returnsNextDueDate')
     )
     const sicCodes = get(activity, 'object.dit:sicCodes')

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from '@govuk-react/link'
-import { DateUtils } from '../utils'
+import { format } from '../../../utils/date-utils'
 import { Card, CardHeader, CardTable } from './card'
 import { ACTIVITY_TYPE } from '../constants'
 import CardUtils from './card/CardUtils'
@@ -59,7 +59,7 @@ export default class Referral extends React.PureComponent {
             },
             {
               header: 'Completed on',
-              content: completedOn && DateUtils.format(completedOn),
+              content: completedOn && format(completedOn),
             },
           ]}
         />

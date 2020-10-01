@@ -15,7 +15,8 @@ import { AdviserItemRenderer, ContactItemRenderer } from './card/item-renderers'
 import { ACTIVITY_TYPE } from '../constants'
 
 import CardUtils from './card/CardUtils'
-import { DateUtils, NumberUtils } from '../utils'
+import { format } from '../../../utils/date-utils'
+import { currencyGBP, decimal } from '../../../utils/number-utils'
 
 const TITLES = {
   add: 'New investment project added',
@@ -42,24 +43,22 @@ export default class InvestmentProject extends React.PureComponent {
     const name = get(activity, 'object.name')
     const investmentType = get(activity, 'object.dit:investmentType.name')
     const adviser = CardUtils.getAdviser(activity)
-    const estimatedLandDate = DateUtils.format(
+    const estimatedLandDate = format(
       get(activity, 'object.dit:estimatedLandDate')
     )
     const contacts = CardUtils.getContacts(activity)
 
     // Specific to Foreign direct investment (FDI) only
-    const totalInvestment = NumberUtils.currencyGBP(
+    const totalInvestment = currencyGBP(
       get(activity, 'object.dit:totalInvestment')
     )
-    const foreignEquityInvestment = NumberUtils.currencyGBP(
+    const foreignEquityInvestment = currencyGBP(
       get(activity, 'object.dit:foreignEquityInvestment')
     )
-    const grossValueAdded = NumberUtils.currencyGBP(
+    const grossValueAdded = currencyGBP(
       get(activity, 'object.dit:grossValueAdded')
     )
-    const numberNewJobs = NumberUtils.decimal(
-      get(activity, 'object.dit:numberNewJobs')
-    )
+    const numberNewJobs = decimal(get(activity, 'object.dit:numberNewJobs'))
 
     const published = get(activity, 'published')
 
