@@ -62,7 +62,7 @@ describe('With Zipkin headers', () => {
     authorisedRequest(request, options)
 
     expect(requestPromiseStub.firstCall.lastArg.headers).deep.equals({
-      Authorization: 'Bearer fake-token',
+      Authorization: 'this should flag as a fault',
       'x-b3-spanid': 'fake-span-id',
       'x-b3-traceid': 'fake-trace-id',
     })
