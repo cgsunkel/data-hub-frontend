@@ -3,7 +3,7 @@ FilterCheckboxes
 
 ### Description
 
-This is a typeahead is to be used in the collection list pages, this component depends on the [Task component](https://github.com/uktrade/data-hub-frontend/tree/master/src/client/components/Task) and should be used in conjuction with our [React/redux architecture](https://github.com/uktrade/data-hub-frontend/blob/master/docs/Redux%20and%20Saga.md).
+These are checkboxes be used as filters in the collection list pages, this component depends on the [Task component](https://github.com/uktrade/data-hub-frontend/tree/master/src/client/components/Task) and should be used in conjuction with our [React/redux architecture](https://github.com/uktrade/data-hub-frontend/blob/master/docs/Redux%20and%20Saga.md).
 
 ### Usage
 

@@ -3,10 +3,46 @@ import PropTypes from 'prop-types'
 import Checkbox from '@govuk-react/checkbox'
 import MultiChoice from '@govuk-react/multi-choice'
 import { BODY_SIZES } from '@govuk-react/constants'
+import { GREY_2 } from 'govuk-colours'
 import styled from 'styled-components'
 
-import { FilterFieldWrapper } from '../../../../components'
+import { FieldWrapper } from '../../../../components'
 import Task from '../../../../components/Task'
+
+const StyledFieldWrapper = styled(FieldWrapper)`
+  label {
+    font-weight: normal;
+  }
+  label:not(:first-child) {
+    padding-left: 20px;
+  }
+  input {
+    left: -10px;
+    top: -2px;
+    + span {
+      padding: 10px 15px 5px;
+      &::before {
+        top: 8px;
+        width: 24px;
+        height: 24px;
+      }
+      &::after {
+        top: 14px;
+        left: 5px;
+        width: 10px;
+        height: 4.5px;
+        border-width: 0 0 3px 3px;
+      }
+    }
+    &:hover {
+      + span {
+        &::before {
+          outline: 10px solid ${GREY_2};
+        }
+      }
+    }
+  }
+`
 
 const StyledCheckbox = styled(Checkbox)`
   ${(props) =>
@@ -52,7 +88,7 @@ const FilterCheckboxes = ({
   value = '',
 }) => {
   return (
-    <FilterFieldWrapper label={label} name={name} hint={hint}>
+    <StyledFieldWrapper label={label} name={name} hint={hint}>
       <Task.Status {...taskProps}>
         {() => (
           <MultiChoice>
@@ -82,7 +118,7 @@ const FilterCheckboxes = ({
           </MultiChoice>
         )}
       </Task.Status>
-    </FilterFieldWrapper>
+    </StyledFieldWrapper>
   )
 }
 
