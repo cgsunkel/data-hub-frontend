@@ -2,8 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import { throttle } from 'lodash'
+import styled from 'styled-components'
+import { FONT_WEIGHTS } from '@govuk-react/constants'
 
-import { Typeahead, FilterFieldWrapper } from '../../../../components'
+import { Typeahead, FieldWrapper } from '../../../../components'
 import Task from '../../../../components/Task'
 
 import { parseAdviserData } from '../../../../../common/formatAdviser'
@@ -22,6 +24,12 @@ const fetchAdvisers = (onlyShowActiveAdvisers) =>
     500
   )
 
+const StyledFieldWrapper = styled(FieldWrapper)`
+  label {
+    font-weight: ${FONT_WEIGHTS.regular};
+  }
+`
+
 const FilterAdvisersTypeAhead = ({
   name,
   label = '',
@@ -38,7 +46,7 @@ const FilterAdvisersTypeAhead = ({
   loadOptions = fetchAdvisers(onlyShowActiveAdvisers),
 }) => {
   return (
-    <FilterFieldWrapper label={label} name={name} hint={hint}>
+    <StyledFieldWrapper label={label} name={name} hint={hint}>
       <Task.Status {...taskProps}>
         {() => (
           <Typeahead
@@ -54,7 +62,7 @@ const FilterAdvisersTypeAhead = ({
           />
         )}
       </Task.Status>
-    </FilterFieldWrapper>
+    </StyledFieldWrapper>
   )
 }
 
