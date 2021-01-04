@@ -9,11 +9,11 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      time: "16:43"
+      time: "16:53"
       timezone: "Etc/GMT"
     allowed_updates:
       - match:
-        update_type: "security"
+          update_type: "security"
     reviewers:
       - "cgsunkel" # for now - I will change this next year
     open-pull-requests-limit: 50
