@@ -89,7 +89,7 @@
     "core-js": "^3.6.5",
     "css-loader": "^4.3.0",
     "csurf": "^1.9.0",
-    "data-hub-components": "5.10.2",
+    "data-hub-components": "6.0.0",
     "date-fns": "^1.29.0",
     "del-cli": "^3.0.0",
     "details-element-polyfill": "^2.4.0",
