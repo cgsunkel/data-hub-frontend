@@ -22,7 +22,7 @@ jobs:
         - name: Read date tag
           run: |
             echo "$abbr"
-            echo "${{ env.abbr }}$
+            echo "${{ env.abbr }}"
 
         - name: Make branch
           uses: peterjgrainger/action-create-branch@v2.0.1
