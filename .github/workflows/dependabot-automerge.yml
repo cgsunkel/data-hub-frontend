@@ -31,4 +31,6 @@ jobs:
             branch_name: dependencies-{{ steps.date.outputs.date }} >> $BRANCH_NAME
           with:
             branch: dependencies-${{ env.tag }}
-
+        
+        - name: Get PR author
+          run: echo "author=${{ github.event.pull_request.user.login }}" >> $GITHUB_ENV
