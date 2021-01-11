@@ -15,14 +15,14 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-        - name: Get today's date
+        - name: Create the date tag
           id: date
-          run: echo "name=date::$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+          run: echo ::set-output name=date::$(date +'%Y-%m-%d')"
 
         - name: Make branch
           uses: peterjgrainger/action-create-branch@v2.0.1
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            branch: 'dependencies' #  -{{ steps.date.outputs.date }}'
+            branch: dependencies-{{ steps.date.outputs.date }}
 
