@@ -17,7 +17,7 @@ jobs:
     steps:
         - name: Create the date tag
           id: date
-          run: echo "tag=date::$(date '+%Y-%m-%d')" >> $GITHUB_ENV
+          run: echo "tag=$(date '+%Y-%m-%d')" >> $GITHUB_ENV
         
         - name: Read date tag
           run: |
