@@ -17,12 +17,13 @@ jobs:
     steps:
         - name: Create the date tag
           id: date
-          run: echo ::set-output name=date::$(date +'%Y-%m-%d') >> $DATE_TAG
+          run: echo ::set-output name=date::$(date +'%Y-%m-%d')
 
         - name: Make branch
           uses: peterjgrainger/action-create-branch@v2.0.1
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            branch_name: dependencies-{{ steps.date.outputs.date }} >> $BRANCH_NAME
           with:
-            branch: dependencies-{{ $DATE_TAG }}
+            branch: {{ $BRANCH_NAME }}
 
