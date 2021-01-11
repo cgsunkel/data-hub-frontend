@@ -23,6 +23,7 @@ jobs:
           uses: peterjgrainger/action-create-branch@v2.0.1
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            branch_name: dependencies-{{ steps.date.outputs.date }}
           with:
-            branch: dependencies-{{ steps.date.outputs.date }}
+            branch: branch_name
 
