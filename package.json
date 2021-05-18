@@ -137,7 +137,7 @@
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.1.2",
     "react-use": "^15.1.1",
-    "redis": "3.1.1",
+    "redis": "3.1.2",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-saga": "^1.1.3",
