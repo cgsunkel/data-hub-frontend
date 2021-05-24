@@ -93,7 +93,7 @@
     "date-fns": "^1.29.0",
     "del-cli": "^3.0.0",
     "details-element-polyfill": "^2.4.0",
-    "dotenv": "^8.2.0",
+    "dotenv": "^10.0.0",
     "elastic-apm-node": "^3.6.1",
     "element-closest": "^3.0.2",
     "express": "^4.16.2",
